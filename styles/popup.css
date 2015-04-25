@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+
+    color: #2600ff;
+}
+body {
+    width: 500px;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    line-height: 2;
+}
+header input {
+    height: 30px;
+}
+
+.new-thing {
+    width: 350px;
+}
+.new-times {
+    width: 50px;
+}
+.thing-list {
+    margin: 10px;
+
+    font-size: 18px;
+}
+
+.thing-list li {
+    position: relative;
+
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.thing-list li.draghover::before {
+    position: absolute;
+    top: -14px;
+
+    width: '10px';
+
+    content: '→';
+
+    color: green;
+}
+
+.thing-list .editing .view {
+    display: none;
+}
+
+.thing-list .editing .edit {
+    display: block;
+}
+
+.view {
+    overflow: hidden;
+
+    width: 450px;
+    margin: 2px auto;
+    padding-left: 5px;
+
+    cursor: move;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    color: #4F4343;
+}
+
+.gray {
+    background-color: #ddd;
+}
+
+.white {
+    background-color: white;
+}
+
+.green {
+    background-color: rgb(25, 134, 0);
+}
+
+.blue {
+    background-color: rgb(73, 138, 226);
+}
+
+.purple {
+    background-color: rgb(140, 89, 184);
+}
+
+.orange {
+    background-color: rgb(253, 169, 81);
+}
+
+.view .thing-name,
+.view .thing-times {
+    float: left;
+}
+
+.view .thing-name {
+    width: 350px;
+}
+
+.thing-list .edit {
+    display: none;
+
+    height: 30px;
+    margin-left: 20px;
+
+    font-size: 20px;
+}
+
+.edit input {
+    height: 30px;
+
+    font-size: 18px;
+}
+
+.edit .title-edit {
+    width: 350px;
+}
+
+.edit .alltimes-edit {
+    width: 50px;
+}
+
+.edit .edit-done {
+    margin-left: 12px;
+}
+.view .thing-times {
+    margin-left: 20px;
+}
+
+.view .expected-times {
+    color: rgb(53, 204, 75);
+}
+
+.view .current-times {
+    color: #EC8B73;
+}
+
+.view .addtimes {
+    float: right;
+
+    width: 20px;
+
+    cursor: pointer;
+}
+
+.undelbar {
+    display: none;
+
+    width: 450px;
+    height: 40px;
+    margin: 0 auto;
+
+    font-size: 14px;
+    line-height: 40px;
+
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.undelbar .tip {
+    float: left;
+
+    margin-left: 30px;
+
+    color: #fff;
+}
+
+.undelbar .btns {
+    float: right;
+}
+
+.undelbar a {
+    display: inline-block;
+
+    width: 50px;
+
+    color: #ccc;
+}
+
+.undelbar .undel {
+    text-align: center;
+
+    color: orange;
+}
+
+.undelbar .undel:hover {
+    background: #000;
+}
+
+.undelbar .closeundel {
+    text-align: center;
+}
+
+.dustbin {
+    height: 30px;
+
+    background: url(/assets/del.png) no-repeat center center;
+    -webkit-background-size: 30px;
+    background-size: 30px;
+}
+
+.dustbin.hover {
+    border: 1px dashed #ddd;
+    background-color: #f0f0f0;
+}
+
+footer {
+    margin-top: 20px;
+}

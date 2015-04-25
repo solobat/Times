@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "Times",
+    "short_name": "Times",
+    "version": "0.0.4",
+    "description": "Times manager",
+    "background": {
+        "page": "html/bg.html"
+    },
+    "browser_action": {
+        "default_icon": "assets/icon_16.png",
+        "default_title": "Times",
+        "default_popup": "html/popup.html"
+    },
+    "icons": {
+        "16": "assets/icon_16.png"
+    },
+    "web_accessible_resources": [
+        "assets/*"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "options_page": "html/options.html",
+    "permissions": [
+        "storage",
+        "notifications",
+        "<all_urls>"
+    ]
+}
