@@ -2,3 +2,6 @@
 
 ## update
 v0.0.34 删除撤消,拖拽移动位置
+
+## TODOS
++ react/flux
