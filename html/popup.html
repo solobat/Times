@@ -8,54 +8,8 @@
 </head>
 
 <body>
-    <div id="timesapp">
-        <header>
-            <header>
-                <h1>Times</h1>
-                <input id="new-thing" class="new-thing" type="text" placeholder="What needs to do?">
-                <input id="new-times" class="new-times" type="number">
-                <input id="addOne" type="button" value="add">
-            </header>
-        </header>
-        <div id="main">
-            <ul class="thing-list" id="thing-list">
-            </ul>
-            <div id="undelbar" class="undelbar">
-                <div class="tip">已删除</div>
-                <div class="btns">
-                    <a href="#" id="undel" class="undel">撤消</a>
-                    <a href="#" id="closeundel" class="closeundel">X</a>
-                </div>
-            </div>
-            <div id="dustbin" class="dustbin"></div>
-        </div>
-        <footer></footer>
-    </div>
-    <script type="text/template" id="item-template">
-        <div draggable="true" class="view <% if (typeof color === 'string') {%><%= color%><% } %>">
-            <div class="thing-name">
-                <%- title%>
-            </div>
-            <div class="thing-times">
-                <span class="expected-times"><%- alltimes%></span> |
-                <span class="current-times"><%- curtimes%></span>
-            </div>
-            <a class="addtimes">+</a>
-        </div>
-        <div class="edit">
-            <input class="title-edit" type="text" value="<%- title %>" />
-            <input class="alltimes-edit" type="number" value="<%- alltimes %>" />
-            <a class="edit-done" href="#">√</a>
-        </div>
-    </script>
-    <script type="text/template" id="stats-template">
-        <div class="thing-count"></div>
-    </script>
-    <script src="/lib/jquery.js"></script>
-    <script src="/lib/underscore.js"></script>
-    <script src="/lib/backbone.js"></script>
-    <script src="/lib/backbone.localStorage.js"></script>
-    <script src="/scripts/things.js"></script>
+    <section id="timesapp"></section>
+    <script src="../dist/popup.bundle.js"></script>
 </body>
 
 </html>
