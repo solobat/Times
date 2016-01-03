@@ -14,34 +14,38 @@ class TodoItem extends Component {
     this.setState({ editing: true })
   }
 
-  handleSave(id, text) {
+  handleSave(id, text, times) {
     if (text.length === 0) {
       this.props.deleteTodo(id)
     } else {
-      this.props.editTodo(id, text)
+      this.props.editTodo(id, text, times)
     }
     this.setState({ editing: false })
   }
 
   render() {
-    const { todo, completeTodo, deleteTodo } = this.props
+    const { todo, addTimes, deleteTodo } = this.props
 
     let element
     if (this.state.editing) {
       element = (
         <TodoTextInput text={todo.text}
+                       times={todo.times}
                        editing={this.state.editing}
-                       onSave={(text) => this.handleSave(todo.id, text)} />
+                       onSave={(text, times) => this.handleSave(todo.id, text, times)} />
       )
     } else {
       element = (
         <div className="view">
           <input className="toggle"
-                 type="checkbox"
-                 checked={todo.completed}
-                 onChange={() => completeTodo(todo.id)} />
+                 type="button"
+                 value="+"
+                 onClick={() => addTimes(todo.id)} />
           <label onDoubleClick={this.handleDoubleClick.bind(this)}>
             {todo.text}
+          </label>
+          <label>
+            {todo.dotimes}/{todo.times}
           </label>
           <button className="destroy"
                   onClick={() => deleteTodo(todo.id)} />
@@ -64,7 +68,7 @@ TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   editTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
-  completeTodo: PropTypes.func.isRequired
+  addTimes: PropTypes.func.isRequired
 }
 
 export default TodoItem

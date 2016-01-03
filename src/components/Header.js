@@ -2,19 +2,19 @@ import React, { PropTypes, Component } from 'react'
 import TodoTextInput from './TodoTextInput'
 
 class Header extends Component {
-  handleSave(text) {
+  handleSave(text, times) {
     if (text.length !== 0) {
-      this.props.addTodo(text)
+      this.props.addTodo(text, times)
     }
   }
 
   render() {
     return (
       <header className="header">
-          <h1>todos</h1>
+          <h1>Times</h1>
           <TodoTextInput newTodo
                          onSave={this.handleSave.bind(this)}
-                         placeholder="What needs to be done?" />
+                         placeholder="应该做点儿啥?" />
       </header>
     )
   }

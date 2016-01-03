@@ -1,7 +1,6 @@
 ## Times manager
 
-## update
-v0.0.34 删除撤消,拖拽移动位置
-
 ## TODOS
-+ react/flux
++ 样式调整
++ 根据次数变颜色
++ storage方案

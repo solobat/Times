@@ -1,8 +1,10 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, ADD_TIMES, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
 
 const initialState = [
   {
-    text: 'Use Redux',
+    text: '喝水',
+    times: 8,
+    dotimes: 0,
     completed: false,
     id: 0
   }
@@ -15,8 +17,10 @@ export default function todos(state = initialState, action) {
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           completed: false,
-          text: action.text
-        }, 
+          text: action.text,
+          times: action.times,
+          dotimes: 0
+        },
         ...state
       ]
 
@@ -28,14 +32,14 @@ export default function todos(state = initialState, action) {
     case EDIT_TODO:
       return state.map(todo =>
         todo.id === action.id ?
-          Object.assign({}, todo, { text: action.text }) :
+          Object.assign({}, todo, { text: action.text, times: action.times }) :
           todo
       )
 
-    case COMPLETE_TODO:
+    case ADD_TIMES:
       return state.map(todo =>
         todo.id === action.id ?
-          Object.assign({}, todo, { completed: !todo.completed }) :
+          Object.assign({}, todo, { dotimes: todo.dotimes + 1 }) :
           todo
       )
 
