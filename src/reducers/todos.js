@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, ADD_TIMES, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, ADD_TIMES, COMPLETE_ALL, CLEAR_COMPLETED, RESET_TIMES } from '../constants/ActionTypes'
 
 const initialState = [
   {
@@ -96,6 +96,13 @@ export default function todos(state = initialState, action) {
 
     case CLEAR_COMPLETED:
       return state.filter(todo => todo.completed === false)
+
+    case RESET_TIMES:
+      return state.map(todo => Object.assign({}, todo, {
+        dotimes: 0,
+        level: 0,
+        completed: false
+      }))
 
     default:
       return state

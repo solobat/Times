@@ -43,7 +43,7 @@ class TodoItem extends Component {
                  value="+"
                  onClick={() => addTimes(todo.id)} />
           <div className="view-con" onDoubleClick={this.handleDoubleClick.bind(this)}>
-            <label>
+            <label className="todo-text">
               {todo.text}
             </label>
             <label>

@@ -23,3 +23,7 @@ export function completeAll() {
 export function clearCompleted() {
   return { type: types.CLEAR_COMPLETED }
 }
+
+export function resetTimes() {
+  return { type: types.RESET_TIMES }
+}

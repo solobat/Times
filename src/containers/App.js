@@ -4,8 +4,24 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions/todos'
+import moment from 'moment'
+
+var localStorage = window.localStorage
 
 class App extends Component {
+  constructor(props, context) {
+    super(props, context)
+
+    let today = moment()
+    let date = localStorage.date
+
+    if (date && !today.isSame(moment(date), 'day')) {
+      this.props.actions.resetTimes()
+    }
+
+    localStorage.date = today.format('YYYY-MM-DD')
+  }
+
   render() {
     const { todos, actions } = this.props
     return (
