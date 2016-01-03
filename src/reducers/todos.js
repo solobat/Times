@@ -6,9 +6,36 @@ const initialState = [
     times: 8,
     dotimes: 0,
     completed: false,
+    level: 0,
     id: 0
   }
 ]
+
+function getLevelByTimes(all, cur) {
+  if (!cur) {
+    return 0
+  }
+
+  var ratio = all / cur
+
+  if (ratio >= 4) {
+    return 0
+  }
+  else if (ratio >= 3) {
+    return 1
+  }
+  else if (ratio >= 2) {
+    return 2
+  }
+  else if (ratio >= 1) {
+    return 3
+  }
+  else if (ratio >= 0.5) {
+    return 4
+  }
+
+  return 5
+}
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
@@ -19,7 +46,8 @@ export default function todos(state = initialState, action) {
           completed: false,
           text: action.text,
           times: action.times,
-          dotimes: 0
+          dotimes: 0,
+          level: 0
         },
         ...state
       ]
@@ -30,18 +58,35 @@ export default function todos(state = initialState, action) {
       )
 
     case EDIT_TODO:
-      return state.map(todo =>
-        todo.id === action.id ?
-          Object.assign({}, todo, { text: action.text, times: action.times }) :
-          todo
-      )
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          const level = getLevelByTimes(action.times, todo.dotimes)
+
+          return Object.assign({}, todo, {
+            level: level,
+            times: action.times,
+            completed: todo.dotimes >= action.times
+          })
+        } else {
+          return todo
+        }
+      })
 
     case ADD_TIMES:
-      return state.map(todo =>
-        todo.id === action.id ?
-          Object.assign({}, todo, { dotimes: todo.dotimes + 1 }) :
-          todo
-      )
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          const dotimes = todo.dotimes + 1
+          const level = getLevelByTimes(todo.times, dotimes)
+
+          return Object.assign({}, todo, {
+            dotimes: todo.dotimes + 1,
+            level: level,
+            completed: todo.dotimes + 1 >= todo.times
+          })
+        } else {
+          return todo
+        }
+      })
 
     case COMPLETE_ALL:
       const areAllMarked = state.every(todo => todo.completed)

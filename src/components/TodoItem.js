@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import TodoTextInput from './TodoTextInput'
+import { TODO_LEVELS } from '../constants/TodoLevel.js'
 
 class TodoItem extends Component {
   constructor(props, context) {
@@ -36,19 +37,21 @@ class TodoItem extends Component {
       )
     } else {
       element = (
-        <div className="view">
-          <input className="toggle"
+        <div className="view" data-level={TODO_LEVELS[todo.level]}>
+          <input className="add-times"
                  type="button"
                  value="+"
                  onClick={() => addTimes(todo.id)} />
-          <label onDoubleClick={this.handleDoubleClick.bind(this)}>
-            {todo.text}
-          </label>
-          <label>
-            {todo.dotimes}/{todo.times}
-          </label>
-          <button className="destroy"
-                  onClick={() => deleteTodo(todo.id)} />
+          <div className="view-con" onDoubleClick={this.handleDoubleClick.bind(this)}>
+            <label>
+              {todo.text}
+            </label>
+            <label>
+              {todo.dotimes}/{todo.times}
+            </label>
+            <button className="destroy"
+                    onClick={() => deleteTodo(todo.id)} />
+          </div>
         </div>
       )
     }

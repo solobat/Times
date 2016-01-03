@@ -31,30 +31,30 @@ class TodoTextInput extends Component {
   render() {
     return (
       <div>
-      <input className={
-        classnames({
-          edit: this.props.editing,
-          'new-todo': this.props.newTodo
-        })}
-        type="text"
-        placeholder={this.props.placeholder}
-        autoFocus="true"
-        value={this.state.text}
-        ref="todoText"
-        onChange={this.handleTextChange.bind(this)}
-        />
-      <input className="todo-times"
-        type="number"
-        value={this.state.times}
-        ref="todoTimes"
-        onChange={this.handleTimesChange.bind(this)}
-        />
-      <input className="confirm"
-        type="button"
-        value="确定"
-        onClick={this.handleSubmit.bind(this)}
-        />
-    </div>
+        <input className={
+          classnames({
+            edit: this.props.editing,
+            'new-todo': this.props.newTodo
+          })}
+          type="text"
+          placeholder={this.props.placeholder}
+          autoFocus="true"
+          value={this.state.text}
+          ref="todoText"
+          onChange={this.handleTextChange.bind(this)}
+          />
+        <input className="todo-times"
+          type="number"
+          value={this.state.times}
+          ref="todoTimes"
+          onChange={this.handleTimesChange.bind(this)}
+          />
+        <input className="confirm"
+          type="button"
+          value="确定"
+          onClick={this.handleSubmit.bind(this)}
+          />
+      </div>
     )
   }
 }
